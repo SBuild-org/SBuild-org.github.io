@@ -1,0 +1,8 @@
+= sbuild.org
+
+This project contains the content of the site http://sbuild.org.
+
+The content served via the GitHub CDN is contained in the https://github.com/SBuild-org/site-sbuild-org/tree/master[`master`] branch.
+
+The site is automatically build on Travis-CI. The source is located in: https://github.com/SBuild-org/site-sbuild-org
+

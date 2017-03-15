@@ -1,0 +1,1127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SBuild Reference Manual 0.7.3 - SBuild</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+	<!-- TWitter card -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@SBuildOrg">
+	<meta name="twitter:creator" content="@TobiasRoeser">
+	       	<meta name="twitter:title" content="SBuild Reference Manual 0.7.3">
+		  <meta name="twitter:description" content="SBuild - the magic-free yet powerful build tool.">
+	
+
+    <!-- Le styles -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/asciidoctor.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="/favicon.ico">
+  </head>
+  <body>
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="/">SBuild</a>
+			<form class="navbar-form navbar-search pull-right" action="http://www.google.com/search">
+                    <input type="text" name="q" class="search-query input-medium" placeholder="Google Search" />
+                    <input type="hidden" name="sitesearch" value="sbuild.org" />
+            </form>
+            <div class="nav-collapse collapse">
+              <ul class="nav pull-right">
+                <li class="dropdown"><a href="/news">News</a>
+                  <ul class="dropdown-menu" role="menu">
+                                            <li><a href="/news/2014/12/17/SBuild-0.7.7-About-Thread-Deadlock-fixes-and-parallel-ClassLoaders-in-Scala.html">SBuild 0.7.7 - About Thread Deadlock fixes and parallel ClassLoaders in Scala <small class="muted">- 17 December 2014</small></a></li>
+                        <li><a href="/news/2014/05/31/SBuild-0.7.6-ScalaDays-Hackathon-Release.html">SBuild 0.7.6 - ScalaDays Hackathon Release <small class="muted">- 31 May 2014</small></a></li>
+                        <li><a href="/news/2014/05/09/SBuild-Eclipse-Plugin-0.4.3-released.html">SBuild Eclipse Plugin 0.4.3 released <small class="muted">- 09 May 2014</small></a></li>
+                        <li><a href="/news/2014/04/04/SBuild-0.7.5-released.html">SBuild 0.7.5 released <small class="muted">- 04 April 2014</small></a></li>
+                        <li><a href="/news/2014/03/20/SBuild-0.7.4-released.html">SBuild 0.7.4 released <small class="muted">- 20 March 2014</small></a></li>
+                    <li><a href="/news">older News...</a><li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a href="/doc/sbuild">Documentation</a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/doc/sbuild/0.7.7"><i class="icon-book"></i> SBuild Reference Manual <span class="muted">0.7.7</span></a></li>
+                    <li><a href="http://sbuild.org/uploads/sbuild/0.7.7/scaladoc/de.tototec.sbuild/#de.tototec.sbuild.package"><i class="icon-file-text"></i> SBuild Core ScalaDoc <span class="muted">0.7.7</span></a></li>
+                    <li><a href="/releases"><i class="icon-calendar"></i> Release History</a></li>
+                    <li><a href="/faq"><i class="icon-question-sign"></i> FAQ</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a href="/download">Download</a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="http://sbuild.org/uploads/sbuild/0.7.7/sbuild-0.7.7-dist.zip"><i class="icon-download-alt"></i> SBuild 0.7.7 Distribution <small class="muted">- 2014-12-17</small></a></li>
+                  </ul>
+                </li>
+                <li><a href="/plugins.html">Plugins</a></li>
+                <li><a href="/eclipse">Eclipse</a></li>
+                <li class="dropdown">
+                    <a href="/community.html">Get Involved / Contact</a>
+                   <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://github.com/SBuild-org/sbuild"><i class="icon-github"></i> GitHub</a></li>
+                    <li><a href="https://twitter.com/SBuildOrg"><i class="icon-twitter"></i> Twitter <small class="muted">@SBuildOrg</small></a></li>
+                    <li><a href="https://gitter.im/SBuild-org/sbuild" ><i class="icon-comments"></i> Gitter</li>
+<!--                    <li><a href="http://webchat.freenode.net/?channels=%23sbuild" ><i class="icon-comments"></i> IRC <small class="muted">#sbuild</small></a></li>
+-->
+                    <li><a href="https://groups.google.com/forum/#!forum/sbuild-dev"><i class="icon-envelope"></i> Developers <small class="muted">sbuild-dev</small></a></li>
+                    <li><a href="https://groups.google.com/forum/#!forum/sbuild-user"><i class="icon-envelope"></i> User Forum <small class="muted">sbuild-user</small></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+	
+	<div class="page-header">
+		<h1>SBuild Reference Manual 0.7.3</h1>
+	</div>
+
+<!--
+	<p><em>18 March 2014</em></p>
+-->
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is the Documentation for SBuild 0.7.3.
+<a href="/doc/sbuild"><em>Not the version you are looking for?</em></a></p>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#installation">1. Installation</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#requirements">1.1. Requirements</a></li>
+<li><a href="#download">1.2. Download</a></li>
+<li><a href="#installation_2">1.3. Installation</a></li>
+<li><a href="#check_the_installation">1.4. Check the installation</a></li>
+<li><a href="#troubleshooting">1.5. Troubleshooting</a></li>
+</ul>
+</li>
+<li><a href="#first_steps_on_the_commandline">2. First steps on the Commandline</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#built_in_commandline_help">2.1. Built-in Commandline Help</a></li>
+<li><a href="#the_buildfile">2.2. The Buildfile</a></li>
+<li><a href="#running_sbuild">2.3. Running SBuild</a></li>
+<li><a href="#built_in_project_exploration">2.4. Built-in project exploration</a></li>
+<li><a href="#project_validation">2.5. Project validation</a></li>
+<li><a href="#parallel_execution">2.6. Parallel execution</a></li>
+<li><a href="#failing_the_build">2.7. Failing the Build</a></li>
+<li><a href="#repetitive_tasks">2.8. Repetitive tasks</a></li>
+</ul>
+</li>
+<li><a href="#writing_buildfiles">3. Writing Buildfiles</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#the_buildfile_the_only_true_source">3.1. The Buildfile - the only true source</a></li>
+<li><a href="#buildfile_preprocessing">3.2. Buildfile Preprocessing</a></li>
+<li><a href="#sbuild_core_api">3.3. SBuild Core API</a></li>
+<li><a href="#using_plugins">3.4. Using Plugins</a></li>
+<li><a href="#multi_project_setups">3.5. Multi-Project Setups</a></li>
+<li><a href="#working_with_include_files">3.6. Working with Include-Files</a></li>
+</ul>
+</li>
+<li><a href="#advanced_topics">4. Advanced topics</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#understanding_schemehandler_s">4.1. Understanding SchemeHandler&#8217;s</a></li>
+<li><a href="#writing_plugins">4.2. Writing Plugins</a></li>
+</ul>
+</li>
+<li><a href="#vision">5. Vision</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#the_unimplemented_parts">5.1. The unimplemented parts</a></li>
+<li><a href="#the_eco_system">5.2. The eco system</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installation">1. Installation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="requirements">1.1. Requirements</h3>
+<div class="paragraph">
+<p>SBuild requires an working Java 6 Runtime. All other dependencies are bundled within the SBuild distribution ZIP file.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="download">1.2. Download</h3>
+<div class="paragraph">
+<p>You can download the latest stable SBuild distribution from the <a href="http://sbuild.org/download">download page</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="installation_2">1.3. Installation</h3>
+<div class="paragraph">
+<p>SBuild runs under all major operating systems, that have a Java 6 Runtime environment.</p>
+</div>
+<div class="sect3">
+<h4 id="linux">1.3.1. Linux</h4>
+<div class="paragraph">
+<p>You should check, if your Linux distribution provides ready to install packages for SBuild,
+if so, you may want to install them in the specific way of your Linux distribution.
+For Gentoo Linux, you can find an <a href="https://github.com/lefou/lefous_portage_overlay/tree/master/dev-java/sbuild-bin">ebuild for SBuild</a>
+in <a href="https://github.com/lefou/lefous_portage_overlay">lefous portage overlay</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you used the installation procedure of you Linux distribution you were done here, else continue.</p>
+</div>
+<div class="paragraph">
+<p>Unpack the ZIP file content into a directory of your choice, e.g. <code>/opt/sbuild-0.7.3</code>.</p>
+</div>
+<div class="paragraph">
+<p>Make sure, the expanded file <code>/opt/sbuild-0.7.3/bin/sbuild</code> is executable, e.g. with <code>chmod -x /opt/sbuild-0.7.3/bin/sbuild</code>.</p>
+</div>
+<div class="paragraph">
+<p>Add the binary directory (e.g. <code>/opt/sbuild-0.7.3/bin/</code>) to your search path: <code>PATH=/opt/sbuild-0.7.3/bin:$PATH</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="windows">1.3.2. Windows</h4>
+<div class="paragraph">
+<p>Unpack the ZIP file content into an directory of your choice, e.g. <code>C:\Program Files\sbuild-0.7.3</code>.
+After unpacking, you should see the sub directories <code>bin</code>, <code>lib</code> and <code>doc</code>.</p>
+</div>
+<div class="paragraph">
+<p>Add the environment variable <code>SBUILD_HOME</code> with the value of that directory, e.g. <code>SBUILD_HOME=C:\Program Files\sbuild-0.7.3</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Why is the <code>SBUILD_HOME</code> variable needed under Windows?</div>
+<div class="paragraph">
+<p>To be honest, we don&#8217;t know. Besides various Windows Command shell magic, we were not able to automatically infer the installation location of SBuild.
+Therefore we rely on the user to provide the location with the <code>SBUILD_HOME</code> variable.</p>
+</div>
+<div class="paragraph">
+<p>If you know how to do that automatically, we would like to receive a new issue or even better pull request from you.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Add the path of the <code>bin</code> directory to the <code>PATH</code> variable: <code>PATH=%SBUILD_HOME%\bin:%PATH%</code></p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="title">Special Notes for Cygwin Users</div>
+<div class="paragraph">
+<p>If running sbuild under cygwin, you may see the following error message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ sbuild all
+java.lang.NoClassDefFoundError: de/tototec/sbuild/runner/SBuildRunner
+Caused by: java.lang.ClassNotFoundException: de.tototec.sbuild.runner.SBuildRunner
+        at java.net.URLClassLoader$1.run(Unknown Source)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.net.URLClassLoader.findClass(Unknown Source)
+        at java.lang.ClassLoader.loadClass(Unknown Source)
+        at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+        at java.lang.ClassLoader.loadClass(Unknown Source)
+Could not find the main class: de.tototec.sbuild.runner.SBuildRunner.  Program will exit.
+Exception in thread "main"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is because cygwin does not execute the <code>sbuild.bat</code> file but the <code>sbuild</code> shell script. You may either call <code>sbuild.bat</code> directly, or delete the <code>PATH/bin/sbuild</code> file.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="check_the_installation">1.4. Check the installation</h3>
+<div class="paragraph">
+<p>Open an new terminal window and execute the command: <code>sbuild --version</code></p>
+</div>
+<div class="paragraph">
+<p>You should see something like this:</p>
+</div>
+<div class="listingblock">
+<div class="title">Output of <code>sbuild --version</code></div>
+<div class="content">
+<pre>$ sbuild --version
+SBuild 0.7.3 (c) 2011 - 2014, ToToTec GbR, Tobias Roeser</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Congratulations, you have successfully finished your SBuild installation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="troubleshooting">1.5. Troubleshooting</h3>
+<div class="paragraph">
+<p>If you went into trouble, you may want to search the <a href="https://sbuild.tototec.de/sbuild/projects/sbuild/boards">fourms</a> or create a new thread.
+If you found a bug please <a href="https://sbuild.tototec.de/sbuild/projects/sbuild/issues">check, if there is already a ticket</a> for it or <a href="https://sbuild.tototec.de/sbuild/projects/sbuild/issues/new">create a new ticket</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="first_steps_on_the_commandline">2. First steps on the Commandline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SBuild&#8217;s main interface is a command line tool called <code>sbuild</code>.
+It supports various options and will receive the targets, you want to build, as parameter.
+When invoked, it searches for a build file <code>SBuild.scala</code> in the current directory, reads it and executes the requested targets.</p>
+</div>
+<div class="sect2">
+<h3 id="built_in_commandline_help">2.1. Built-in Commandline Help</h3>
+<div class="paragraph">
+<p>SBuild supports various commandline options. You can invokde <code>sbuild</code> with the <code>--help</code> or <code>-h</code> option, to get a list of all supported options and parameters with short descriptions.</p>
+</div>
+<div class="listingblock">
+<div class="title">Output of <code>sbuild --help</code></div>
+<div class="content">
+<pre>bash$ sbuild --help
+SBuild 0.7.3 (c) 2011 - 2014, ToToTec GbR, Tobias Roeser
+
+Usage: sbuild [options] [parameter]
+
+Options:
+  --additional-buildfile,-F FILE         Add an additional buildfile into scope.
+  --buildfile,-f FILE                    The buildfile to use (default:
+                                         SBuild.scala).
+  --check                                Check targets for cycles and missing
+                                         scheme handlers.
+  --check-recursive                      Check targets of this project and all
+                                         its modules for cycles and missing
+                                         scheme handlers.
+  --clean                                Remove all generated output and caches.
+                                         This will force a new compile of the
+                                         buildfile. (This will not remove output
+                                         generated by buildfiles.)
+  --create-stub                          Create a new minimal SBuild.scala file
+                                         to start with.
+  --define,-D KEY=VALUE                  Define or override properties. If VALUE
+                                         is omitted it defaults to "true".
+  --dependency-tree                      Show dependency tree(s) and exit.
+  --execution-plan                       Show the execution plan and exit.
+  --fsc                                  Use the fast scala compiler
+                                         (client/server). The fsc compiler of
+                                         the correct Scala version must be
+                                         installed.
+  --help,-h                              Show this help screen.
+  --jobs,-j N                            Allow processing N targets in parallel.
+                                         Use 1 to disable parallel and 0 to use
+                                         <number-of-cpu-cores> threads.
+  --just-clean                           Remove all generated output and caches
+                                         without reading any buildfile. This
+                                         will essentially remove the ".sbuild"
+                                         directory in the current directory.
+  --just-clean-recursive                 Remove all generated output and caches
+                                         without reading any buildfile. This
+                                         will essentially remove the ".sbuild"
+                                         directory in the current directory and
+                                         all sub-directories, no matter, if
+                                         sub-directories contain SBuild projects
+                                         or not.
+  --keep-going,-k                        Keep going when some targets can't be
+                                         made.
+  --list-available-plugins               List all plugins available (used and
+                                         unused) by this project.
+  --list-modules                         Show a list of modules involved in this
+                                         project.
+  --list-plugins                         List all plugins used by this project.
+  --list-targets,-l                      Show a list of targets defined in the
+                                         current buildfile.
+  --list-targets-recursive,-L            Show a list of targets defined in the
+                                         current buildfile and all modules.
+  --no-color                             Disable colored output.
+  --no-fsc                               Do not try to use the fast scala
+                                         compiler (client/server)
+  --no-global                            Do not read global settings from <USER
+                                         HOME>/.sbuildrc.
+  -q,--quiet,--no-progress               Quiet mode. Don't show progress
+                                         messages with progress in percent.
+                                         (This will speed up SBuild
+                                         initialization.)
+  --repeat SECONDS                       Repeat the requested action after the
+                                         given time (in seconds), but not before
+                                         the previous run was completed.
+  --search-targets,--find-targets REGEX  Search targets based on a regular
+                                         expression pattern.
+  --verbose,-v                           Be verbose when running.
+  --version                              Show SBuild version.
+
+Parameter:
+  TARGETS  The target(s) to execute (in order).</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="the_buildfile">2.2. The Buildfile</h3>
+<div class="paragraph">
+<p>The buildfile contains all instructions and target descriptions and is typically written by the developer.</p>
+</div>
+<div class="paragraph">
+<p>If <code>sbuild</code> does not found any buildfile, it will stop with an error message like this one:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>bash$ sbuild
+Initializing project...
+
+SBuild detected a failure in the project configuration or the build scripts.
+Project: SBuild.scala
+Details: Project buildfile "SBuild.scala" does not exists or is not a file.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The relevant error message tells you, that the buildfile <code>SBuild.scala</code> is required to proceed but was not found in the current directory.</p>
+</div>
+<div class="sect3">
+<h4 id="using_an_alternative_buildfile">2.2.1. Using an alternative Buildfile</h4>
+<div class="paragraph">
+<p>To use another buildfile, you can use the <code>--buildfile</code> or <code>-f</code> option.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using an alternative buildfile</div>
+<div class="content">
+<pre>bash$ sbuild -f MyBuild.scala</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating_a_buildfile_stub">2.2.2. Creating a Buildfile stub</h4>
+<div class="paragraph">
+<p>You you want to start a new SBuild project, you can use the <code>--create-stub</code> option, to let SBuild create a minial buildfile for you.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>bash$ sbuild --create-stub
+</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For an easy start you can instruct <code>sbuild</code> to create an minimal template file for you:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>bash $ sbuild --create-stub</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case, you run <code>sbuild --create-stub</code> accidentally in a directory, where a buildfile already exists, SBuild will refuse to override it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>bash$ sbuild --create-stub
+
+SBuild failed with an unexpected exception (SBuildException).
+Details: File SBuild.scala already exists.</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="the_stub_buildfile">2.2.3. The Stub Buildfile</h4>
+<div class="paragraph">
+<p>Here is the content of a Buildfile created with <code>sbuild --create-stub</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint scala language-scala"><code>import de.tototec.sbuild._
+
+@version("0.7.3")
+class SBuild(implicit _project: Project) {
+
+  Target("phony:clean") exec {
+    Path("target").deleteRecursive
+  }
+
+  Target("phony:hello") help "Greet me" exec {
+    println("Hello you")
+  }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This Buildfile contains the following information:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It requires SBuild 0.7.3 or newer</p>
+</li>
+<li>
+<p>It contains two targets <code>clean</code> and <code>hello</code></p>
+</li>
+<li>
+<p>Both targets are <code>phony</code>, which means, they do not produce a single file but constitute some tasks, and both contain some custom actions.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can customize the result of <code>sbuild --create-stub</code> by providing your own stub buildfile.
+To do this, you have to create a directory <code>stub</code> in the installation directory of SBuild (<code>${SBUILD_HOME}</code>) and place the template buildfile in that directory.
+If SBuild is run with the <code>--create-stub</code>, it will first search in that stub directory if it will find a file with the same name as the expected buildfile, namely <code>SBuild.scala</code>.</p>
+</div>
+<div class="paragraph">
+<p>You can also provide more that one stub files with different names.
+To select a specific stub file, e.g. <code>Setup.scala</code>, run SBuild with <code>sbuild --create-stub -f Setup.scala</code>.
+Now SBuild will first search for a file named <code>Setup.scala</code> in the <code>${SBUILD_HOME}/sub</code> directory.
+If one is found, this will be used as stub file, else the built-in default will be used.
+Finally, you will find the newly created stub file in the current directory.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="running_sbuild">2.3. Running SBuild</h3>
+<div class="paragraph">
+<p>To execute one or more targets of a project, simple give the desired targets as parameters.</p>
+</div>
+<div class="paragraph">
+<p>E.g. to execute the <code>clean</code> and the <code>hello</code> targets of the just created buildfile above, you will run <code>sbuild clean hello</code>. Following is the output of that command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>bash$ sbuild clean hello
+Initializing project...
+Compiling build script: /tmp/test/SBuild.scala...   <i class="conum" data-value="1"></i><b>(1)</b>
+[0%] Executing...
+[0%] Executing target: clean   <i class="conum" data-value="2"></i><b>(2)</b>
+[50%] Finished target: clean after 4 msec
+[50%] Executing target: hello
+[50%] Greet me
+Hello you
+[100%] Finished target: hello after 0 msec
+[100%] Execution finished. SBuild init time: 3,904 msec, Execution time: 57 msec   <i class="conum" data-value="3"></i><b>(3)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>If SBuild never run before or if it detects, that the buildfile has changed, it will compile the buildfile, thus the output <code>Compiling build script: ...</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>After compilation of the buildfile, it will execute the required targets and print what it is actual doing paired with a handy progress report.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>At the end, you will see the <code>Execution finished</code> message and some little statistics.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In any subsequent run, compilation of the buildscript is not needed again and SBuild the execution of the requested targets start almost instantly.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>bash$ sbuild clean hello
+Initializing project...
+[0%] Executing...
+[0%] Executing target: clean
+[50%] Finished target: clean after 2 msec
+[50%] Executing target: hello
+[50%] Greet me
+Hello you
+[100%] Finished target: hello after 0 msec
+[100%] Execution finished. SBuild init time: 164 msec, Execution time: 55 msec</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="built_in_project_exploration">2.4. Built-in project exploration</h3>
+<div class="paragraph">
+<p>SBuild has some handy options, which let you easily explore a project. Most of these options also have a "recursive" variant, which includes also all modules (sub projects) into the output.</p>
+</div>
+<div class="paragraph">
+<p>The most frequently used options are:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<colgroup>
+<col style="width:33%;">
+<col style="width:66%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--list-targets</code>, <code>-l</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Show a list of targets defined in the current buildfile.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--list-targets-recursive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Show a list of targets defined in the current buildfile and all modules.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--list-modules</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Show a list of modules involved in this project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--list-plugins</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List all plugins used by this project.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--list-available-plugins</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List all plugins available (used and unused) by this project.</p></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<div class="sect2">
+<h3 id="project_validation">2.5. Project validation</h3>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="parallel_execution">2.6. Parallel execution</h3>
+<div class="paragraph">
+<p>By default, SBuild will execute targets in parallel, to utilize the resources of modern multi-core hardware more efficiently.
+You can customize the number of simultaneously used threads with the <code>--jobs</code> or <code>-j</code> commandline option.
+With <code>-j 1</code>, you can disable the parallelization entirely and will also reduce the output slightly.</p>
+</div>
+<div class="paragraph">
+<p>To use as much threads as your CPU has cores, you can use <code>-j 0</code> (which is also the default) to instruct SBuild to auto-detect the used thread pool size.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To make a custom jobs setting permanent, you can add it to the <code>${HOME}/.sbuildrc</code> file.</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>${HOME}/.sbuildrc</code></div>
+<div class="content">
+<pre class="prettyprint conf language-conf"><code>jobs=4</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="failing_the_build">2.7. Failing the Build</h3>
+<div class="paragraph">
+<p>When SBuild detects an execution failure in a target, it will interrupt all other parallel executing targets, print a error message with some details about the initially failed target and quit.</p>
+</div>
+<div class="paragraph">
+<p>Sometimes, it is desirable to fail the build as late as possible and not stop at the moment the first target fails.
+Of course, the build can not be completed successfully, but some other targets may complete.
+In such scenarios, you can use the <code>--keep-going</code> or <code>-k</code> commandline option.
+When specified, SBuild tries to complete as much targets as possible before failing with a descriptive error message indicating which targets failed and which could not be completed because of unsatisfied dependencies.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="repetitive_tasks">2.8. Repetitive tasks</h3>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="writing_buildfiles">3. Writing Buildfiles</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="the_buildfile_the_only_true_source">3.1. The Buildfile - the only true source</h3>
+<div class="paragraph">
+<p>SBuild buildfiles are normal Scala source files.
+As such, they can be viewed and edited as any other text file with any text editor. Although an editor providing syntax highlighting and other Scala specific candy might be helpful.</p>
+</div>
+<div class="paragraph">
+<p><strong>The buildfile is the only place, where SBuild looks for description of your build!</strong></p>
+</div>
+<div class="paragraph">
+<p>To change the build and the SBuild behavior, you have thus only the option to change the buildfile or to make use of the various commandline options of <code>sbuild</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="buildfile_preprocessing">3.2. Buildfile Preprocessing</h3>
+<div class="paragraph">
+<p>SBuild buildfiles are Scala source files and must be compiled before SBuild can use them.
+This preprocessing is automatically done by SBuild, without any interaction from your site.
+Of course, the Scala compiler has no notion of SBuild plugins, libraries and includes, thus the buildfile must be preprocessed.
+SBuild will extract and interpret specific annotations before the buildfile is compiled and executed.</p>
+</div>
+<div class="paragraph">
+<p>These are the special annotation, which are typically placed just before the build class <code>SBuild</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<colgroup>
+<col style="width:16%;">
+<col style="width:83%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>@version</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specified the minimal SBuild version that is required for this buildfile.
+  This annotation should be present in each buildfile.
+  It will help detect version mismatches which otherwise might result in strange compile or runtime errors, which are comparatively hard to understand.
+</p><p class="tableblock">  Example: <code>@version("0.7.2")</code>
+</p><p class="tableblock">  If in doubt, use the version you are currently using.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>@classpath</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Additional plugins and libraries that should be used by this buildfile have to be declared here.
+  Each given entry will be interpreted as a potentially plugin (see chapter Plugins), unless it is prefixed with <code>raw:</code>.
+  If the entry is a plugin, SBuild will automatically scan it&#8217;s manifest and load it&#8217;s dependencies.
+  All default SchemeHandler can be used here.
+</p><p class="tableblock">  Example: <code>@classpath("mvn:org.sbuild:org.sbuild.plugins.sbuildplugin:0.3.0", "mvn:org.apache.ant:ant:1.8.4")</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>@include</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Here you can refer to additional Scala source files.
+  These files will be compiled by SBuild with the same classpath as the buildfile.
+  The compiled classes will be added to the classpath and can be directly used.
+  All default SchemeHandler can be used here.
+</p><p class="tableblock">  Example: <code>@include("CommonSettings.scala")</code></p></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<div class="sect2">
+<h3 id="sbuild_core_api">3.3. SBuild Core API</h3>
+<div class="paragraph">
+<p>The Core API of SBuild allows you to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>create targets,</p>
+</li>
+<li>
+<p>declare actions that should take place when a target gets executed,</p>
+</li>
+<li>
+<p>define dependencies between targets,</p>
+</li>
+<li>
+<p>interact with the environment,</p>
+</li>
+<li>
+<p>run file operations</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With a knowledge of the Core API, you have everything you need to write simple to complex buildfiles in an imperative style.</p>
+</div>
+<div class="paragraph">
+<p><strong>Please don&#8217;t stop here.</strong> With the use of Plugins you will be able to write much more concise and readable build script in a declarative fashion.</p>
+</div>
+<div class="sect3">
+<h4 id="targets">3.3.1. Targets</h4>
+<div class="paragraph">
+<p>Targets are the central unit of work in SBuild. Each target has at least a <strong>name</strong>. This name is what you use on the SBuild commandline.</p>
+</div>
+<div class="paragraph">
+<p>Targets can be of two kinds:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>file</strong> targets - Targets, that are associated with a local file.</p>
+</li>
+<li>
+<p><strong>phony</strong> targets - Targets, not associated to any file representing some kind of action.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">A buildfile with two targets, <code>file.txt</code> and <code>action</code></div>
+<div class="content">
+<pre class="prettyprint scala language-scala"><code>import de.tototec.sbuild._
+
+@version("0.7.3")
+class SBuild(implicit _project: Project) {
+
+  Target("file.txt") <i class="conum" data-value="1"></i><b>(1)</b>
+
+  Target("phony:action") <i class="conum" data-value="2"></i><b>(2)</b>
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A <strong>file</strong> target associated with the file <code>file.txt</code> in the project directory. The prefix <code>file:</code> is optional and was omitted.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A <strong>phony</strong> target with the name <code>action</code>. As it is <strong>not</strong> associated with any file it must be prefixed with <code>phony:</code>.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>File-Targets represent a file in the local file system.
+If SBuild is requested to execute a file target (without dependencies),
+it will first check if that file already exists, and only if not, the target is run.</p>
+</div>
+<div class="paragraph">
+<p>Phony-Targets represents some kind of action not resulting in a single local file.
+If SBuild is requested to execute a phony target, the target will always run.
+Of course, there are various mechanism to make that logic more clever, e.g. by making targets <code>cacheable</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="executions">3.3.2. Executions</h4>
+<div class="paragraph">
+<p>A plain target as seen above does not do anything when executed. That can be changed by assigning an execution block to a target.</p>
+</div>
+<div class="listingblock">
+<div class="title">A buildfile with two targets, <code>file</code> and <code>action</code>, both having an execution block</div>
+<div class="content">
+<pre class="prettyprint scala language-scala"><code>import de.tototec.sbuild._
+
+@version("0.7.3")
+class SBuild(implicit _project: Project) {
+
+  Target("file.txt") exec { <i class="conum" data-value="1"></i><b>(1)</b>
+    import java.io._
+    val target = Path("file.txt") <i class="conum" data-value="2"></i><b>(2)</b>
+    println(s"Created file: ${target}") <i class="conum" data-value="3"></i><b>(3)</b>
+    val ps = new PrintStream(target)
+    ps.println("file content") <i class="conum" data-value="4"></i><b>(4)</b>
+    ps.close()
+  }
+
+  Target("phony:action") exec { <i class="conum" data-value="5"></i><b>(5)</b>
+    println("Action executed") <i class="conum" data-value="6"></i><b>(6)</b>
+  }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A definition of a file target <code>file.txt</code> with an execution block.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Here you see a way to use <code>Path</code> to construct a <code>java.io.File</code> relative to the project directory. This is not the most appropriate way in this situation, as you will see soon in the "Target Context" section.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The string <code>"Created file: file.txt"</code> will be printed to standard output stream.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The string <code>file content</code> is written into the file <code>file.txt</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>A definition of a phony target with an execution block.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The string <code>"Action executed"</code> will be printed to standard output stream.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The example above shows, how targets with execution blocks can be created.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="dependencies">3.3.3. Dependencies</h4>
+<div class="paragraph">
+<p>Targets can also have dependencies.</p>
+</div>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="target_context">3.3.4. Target Context</h4>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="file_operations">3.3.5. File operations</h4>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using_plugins">3.4. Using Plugins</h3>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="multi_project_setups">3.5. Multi-Project Setups</h3>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="working_with_include_files">3.6. Working with Include-Files</h3>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="advanced_topics">4. Advanced topics</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="understanding_schemehandler_s">4.1. Understanding SchemeHandler&#8217;s</h3>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="writing_plugins">4.2. Writing Plugins</h3>
+<div class="sect3">
+<h4 id="concept">4.2.1. Concept</h4>
+<div class="paragraph">
+<p>The Plugin concept was introduced in SBuild 0.7.0 and further refined in 0.7.1 and 0.7.2.</p>
+</div>
+<div class="paragraph">
+<p>SBuild Users deal mostly with the Plugin API to access and configure Plugin instances.
+Implementers of Plugins implement the `Plugin trait to create and apply plugin instances to the current project.</p>
+</div>
+<div class="paragraph">
+<p>Finally, SBuild plugins need to be packaged as JAR files and need provided special entries in the JAR Manifest.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="plugin_api">4.2.2. Plugin API</h4>
+<div class="paragraph">
+<p>The Plugin API is defined by the <a href="http://sbuild.org/uploads/sbuild/0.7.3/scaladoc/de.tototec.sbuild/#de.tototec.sbuild.Plugin$"><code>Plugin</code> object</a>
+and the <a href="http://sbuild.org/uploads/sbuild/0.7.3/scaladoc/de.tototec.sbuild/#de.tototec.sbuild.Plugin$$PluginHandle"><code>PluginHandle</code> trait</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Plugin</code> object is used to activate a plugin instance and can be also use to query for some properies of a plugin, e.g. it&#8217;s version or whether a concrete instance is active or not.</p>
+</div>
+<div class="paragraph">
+<p>Once activated through one of the <code>Plugin.apply</code> methods, the <code>PluginHandle</code> trait provides various methods to work with Plugin instances.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementing_a_plugin">4.2.3. Implementing a Plugin</h4>
+<div class="paragraph">
+<p>An plugin implementation is essentially a class which extends the <a href="http://sbuild.org/uploads/sbuild/0.7.3/scaladoc/de.tototec.sbuild/#de.tototec.sbuild.Plugin"><code>Plugin</code> trait</a>.</p>
+</div>
+<div class="paragraph">
+<p>This is the <code>Plugin</code> trait (<a href="http://sbuild.org/uploads/sbuild/0.7.3/scaladoc/de.tototec.sbuild/#de.tototec.sbuild.Plugin">see Scaladoc</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint scala language-scala"><code>package de.tototec.sbuild
+
+trait Plugin[T] {  <i class="conum" data-value="1"></i><b>(1)</b>
+  def create(name: String): T  <i class="conum" data-value="2"></i><b>(2)</b>
+  def applyToProject(instances: Seq[(String, T)])  <i class="conum" data-value="3"></i><b>(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The type parameter <code>T</code> represents the type of the plugin instance.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Create a new plugin instance with the name name. <code>""</code> is a valid instance name and represent the default instance.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Apply the plugin&#8217;s functionality to the project. This is called at the end of the project initialization, especially after the buildfile was processed.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The class can have either a default constructor or a one-arg constructor of type <code>Project</code>.
+The later is also the preferred way to get a instance of the current project and is especially required
+if you want to contribute targets or scheme handler to the project.</p>
+</div>
+<div class="paragraph">
+<p>By mixing in additional traits, plugin can make use of additional plugin features.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="plugin_with_dependencies">4.2.4. Plugin with Dependencies</h4>
+<div class="paragraph">
+<p>Plugins that depend on other plugins need to mix-in the <code>PluginWithDependencies</code> trait.
+SBuild will ensure, that such a plugin will be applied to the project before their dependencies are applied.
+This way, it is guaranteed, that configuration changed made while the application can take effect.</p>
+</div>
+<div class="paragraph">
+<p>This is the <code>PluginWithDependencies</code> trait (<a href="http://sbuild.org/uploads/sbuild/0.7.3/scaladoc/de.tototec.sbuild/#de.tototec.sbuild.PluginWithDependencies">see Scaladoc</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint scala language-scala"><code>package de.tototec.sbuild
+
+trait PluginWithDependencies { self: Plugin[_] =&gt;
+  def dependsOn: Seq[PluginDependency]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Currently, two kind of <code>PluginDependency</code>'s can be used:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>PluginDependency.Basic</code> - This is just the reference to another plugin instance class.</p>
+</li>
+<li>
+<p><code>PluginDependency.Versioned</code> - This is a reference to another plugin instance with additional version constraints.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting_notified_when_a_plugin_configuration_changes">4.2.5. Getting notified when a Plugin configuration changes</h4>
+<div class="paragraph">
+<p>Plugins that want to be notified whenever they get (re-)configured need to mix-in the <code>PluginConfigureAware</code> trait.</p>
+</div>
+<div class="paragraph">
+<p>This is the <code>PluginConfigureAware</code> trait (<a href="http://sbuild.org/uploads/sbuild/0.7.3/scaladoc/de.tototec.sbuild/#de.tototec.sbuild.PluginConfigureAware">see Scaladoc</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint scala language-scala"><code>package de.tototec.sbuild
+
+trait PluginConfigureAware[T] { self: Plugin[T] =&gt;
+  def configured(name: String, instance: T)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="packaging_plugins">4.2.6. Packaging Plugins</h4>
+<div class="paragraph">
+<p>The plugin implementation needs to be packaged into a JAR file together with a proper JAR Manifest, which need some of the following supported entries.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SBuild-Plugin</code> - Used to declare one or more plugins. This entry is mandatory!</p>
+</li>
+<li>
+<p><code>SBuild-Classpath</code> - Used to add additional dependencies (as part of the private class space). All default SBuild schemes (file, http, mvn) are supported.</p>
+</li>
+<li>
+<p><code>SBuild-ExportPackage</code> - Used to export some of the plugins private packages. If this is not present, all packages of that plugin will be exported.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="conventions">4.2.7. Conventions</h4>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="plugin_classloading">4.2.8. Plugin Classloading</h4>
+<div class="paragraph">
+<p>TBD</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vision">5. Vision</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="the_unimplemented_parts">5.1. The unimplemented parts</h3>
+
+</div>
+<div class="sect2">
+<h3 id="the_eco_system">5.2. The eco system</h3>
+
+</div>
+</div>
+</div></p>
+
+
+		</div>
+		<div id="push"></div>
+    </div>
+    
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/run_prettify.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SBuild Eclipse Plugin - SBuild</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The SBuild Eclipse Plugin integrates SBuild into the Eclipse IDE by providing a classpath container, implicit download of dependencies as well as JavaDoc and source archives, automatic recompilation and checking of buildfiles and workspace resolution of dependent projects.">
+        <meta name="author" content="">
+    <meta name="keywords" content="">
+
+	<!-- TWitter card -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@SBuildOrg">
+	<meta name="twitter:creator" content="@TobiasRoeser">
+	       	<meta name="twitter:title" content="SBuild Eclipse Plugin">
+		  <meta name="twitter:description" content="The SBuild Eclipse Plugin integrates SBuild into the Eclipse IDE by providing a classpath container, implicit download of dependencies as well as JavaDoc and source archives, automatic recompilation and checking of buildfiles and workspace resolution of dependent projects.">
+	  	
+
+    <!-- Le styles -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/asciidoctor.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="/favicon.ico">
+  </head>
+  <body>
+    <div id="wrap">
+
+	<!-- Fixed navbar -->
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="/">SBuild</a>
+			<form class="navbar-form navbar-search pull-right" action="http://www.google.com/search">
+                    <input type="text" name="q" class="search-query input-medium" placeholder="Google Search" />
+                    <input type="hidden" name="sitesearch" value="sbuild.org" />
+            </form>
+            <div class="nav-collapse collapse">
+              <ul class="nav pull-right">
+                <li class="dropdown"><a href="/news">News</a>
+                  <ul class="dropdown-menu" role="menu">
+                                            <li><a href="/news/2014/12/17/SBuild-0.7.7-About-Thread-Deadlock-fixes-and-parallel-ClassLoaders-in-Scala.html">SBuild 0.7.7 - About Thread Deadlock fixes and parallel ClassLoaders in Scala <small class="muted">- 17 December 2014</small></a></li>
+                        <li><a href="/news/2014/05/31/SBuild-0.7.6-ScalaDays-Hackathon-Release.html">SBuild 0.7.6 - ScalaDays Hackathon Release <small class="muted">- 31 May 2014</small></a></li>
+                        <li><a href="/news/2014/05/09/SBuild-Eclipse-Plugin-0.4.3-released.html">SBuild Eclipse Plugin 0.4.3 released <small class="muted">- 09 May 2014</small></a></li>
+                        <li><a href="/news/2014/04/04/SBuild-0.7.5-released.html">SBuild 0.7.5 released <small class="muted">- 04 April 2014</small></a></li>
+                        <li><a href="/news/2014/03/20/SBuild-0.7.4-released.html">SBuild 0.7.4 released <small class="muted">- 20 March 2014</small></a></li>
+                    <li><a href="/news">older News...</a><li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a href="/doc/sbuild">Documentation</a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/doc/sbuild/0.7.7"><i class="icon-book"></i> SBuild Reference Manual <span class="muted">0.7.7</span></a></li>
+                    <li><a href="http://sbuild.org/uploads/sbuild/0.7.7/scaladoc/de.tototec.sbuild/#de.tototec.sbuild.package"><i class="icon-file-text"></i> SBuild Core ScalaDoc <span class="muted">0.7.7</span></a></li>
+                    <li><a href="/releases"><i class="icon-calendar"></i> Release History</a></li>
+                    <li><a href="/faq"><i class="icon-question-sign"></i> FAQ</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a href="/download">Download</a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="http://sbuild.org/uploads/sbuild/0.7.7/sbuild-0.7.7-dist.zip"><i class="icon-download-alt"></i> SBuild 0.7.7 Distribution <small class="muted">- 2014-12-17</small></a></li>
+                  </ul>
+                </li>
+                <li><a href="/plugins.html">Plugins</a></li>
+                <li><a href="/eclipse">Eclipse</a></li>
+                <li class="dropdown">
+                    <a href="/community.html">Get Involved / Contact</a>
+                   <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://github.com/SBuild-org/sbuild"><i class="icon-github"></i> GitHub</a></li>
+                    <li><a href="https://twitter.com/SBuildOrg"><i class="icon-twitter"></i> Twitter <small class="muted">@SBuildOrg</small></a></li>
+                    <li><a href="https://gitter.im/SBuild-org/sbuild" ><i class="icon-comments"></i> Gitter</li>
+<!--                    <li><a href="http://webchat.freenode.net/?channels=%23sbuild" ><i class="icon-comments"></i> IRC <small class="muted">#sbuild</small></a></li>
+-->
+                    <li><a href="https://groups.google.com/forum/#!forum/sbuild-dev"><i class="icon-envelope"></i> Developers <small class="muted">sbuild-dev</small></a></li>
+                    <li><a href="https://groups.google.com/forum/#!forum/sbuild-user"><i class="icon-envelope"></i> User Forum <small class="muted">sbuild-user</small></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+	
+	<div class="page-header">
+		<h1>SBuild Eclipse Plugin</h1>
+	</div>
+
+<!--
+	<p><em>04 February 2014</em></p>
+-->
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The SBuild Eclipse Plugin extends your Eclipse IDE with SBuild support.</p>
+</div>
+<div class="paragraph">
+<p>Current version is <a href="/releases/SBuild-Eclipse-Plugin-0.4.3.html">0.4.3</a>.</p>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#description">Description</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#InstallationViaUpdateSite">Installation via Update-Site</a></li>
+<li><a href="#eclipse_setup">Eclipse Setup</a></li>
+<li><a href="#project_setup">Project Setup</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#export_the_required_dependencies_from_your_buildfile">Export the required dependencies from your buildfile</a></li>
+<li><a href="#add_sbuild_libraries_to_the_project">Add SBuild Libraries to the Project</a></li>
+</ul>
+</li>
+<li><a href="#have_fun">Have fun</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SBuild Eclipse Plugin integrates SBuild into the Eclipse IDE.  This plugin provides various featues:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SBuild Classpath Container - Access your SBuild project dependencies easily from Eclipse</p>
+</li>
+<li>
+<p>Download of Missing Dependencies - Dependencies will be automatically downloaded</p>
+</li>
+<li>
+<p>Workspace Resolution - Dependencies, also open in the Eclipse Workspace can be referenced directly</p>
+</li>
+<li>
+<p>Change Detection -  Automatic update of the classpath container when the buildfile changes</p>
+</li>
+<li>
+<p>Error Markers in Buildfile Editor</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These features are planned to be implemented:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Introspection - Inspect the SBuild project, list targets, show plugins</p>
+</li>
+<li>
+<p>Target Execution - Execution of SBuild targets</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="requirements">Requirements</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://eclipse.org">Eclipse 3.4</a> or newer</p>
+</li>
+<li>
+<p>SBuild 0.4.0 or newer</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="InstallationViaUpdateSite">Installation via Update-Site</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Installation via Update-Site is the preferred installation routine.</p>
+</div>
+<div class="paragraph">
+<p><strong>Update-Site URL: <a href="http://sbuild.tototec.de/svn/eclipse-update-site/stable">http://sbuild.tototec.de/svn/eclipse-update-site/stable</a></strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="InstallNewSoftware.png" alt="Install new Software" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can <a href="http://sbuild.tototec.de/sbuild/projects/sbuild/files">download</a> the SBuild Eclipse Plugin and place it into the "dropins" folder of your Eclipse Installation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="eclipse_setup">Eclipse Setup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To function properly, you need to tell your Eclipse the location of the SBuild installation.
+Open the Eclipse Preferences &#8594; Java &#8594; Build Path &#8594; Classpath Variables and add the variable <code>SBUILD_HOME</code>, pointing to the installation directory of SBuild.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="ClasspathVariables.png" alt="Classpath Variable" width="400">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+Mac homebrew users will find the installation path of SBuild under <code>/usr/local/Cellar/sbuild/${VERSION}/libexec</code>, e.g. <code>/usr/local/Cellar/sbuild/0.7.1/libexec</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project_setup">Project Setup</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="export_the_required_dependencies_from_your_buildfile">Export the required dependencies from your buildfile</h3>
+<div class="paragraph">
+<p>You need to export the required classpath before you can access it from within Eclipse.
+See <code>ExportDependencies</code> for details.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint scala language-scala"><code>val dependencies = // your dependencies you want to access from within Eclipse
+
+ExportDependencies("eclipse.classpath", dependencies)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Line 3 shows how to export the dependencies under the name "eclipse.classpath" (which is the preferred default).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add_sbuild_libraries_to_the_project">Add SBuild Libraries to the Project</h3>
+<div class="paragraph">
+<p>To add the "SBuild Libraries" classpath container to your Eclipse project, open the <em>Project Preferences</em> &#8594; <em>Java Build Path</em> &#8594; <em>Libraries</em> and press the <em>Add Library&#8230;</em> Button.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="AddLibrary.png" alt="Add Library" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>Choose "SBuild Libraries" and press <em>Next</em>.
+In the next dialog page, you have the option to configure some settings, but normally you can just press <em>Finish</em>.
+You can always reach and modify these settings later.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="EditLibrary.png" alt="Edit Library" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>The configurable settings are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name of SBuild buildfile</p>
+</li>
+<li>
+<p>Choose exported dependencies</p>
+</li>
+<li>
+<p>Update Policy</p>
+</li>
+<li>
+<p>Workspace Project aliases</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="have_fun">Have fun</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Congratulations!</strong></p>
+</div>
+<div class="paragraph">
+<p>You now have added the "SBuild Libraries" classpath container to your project.
+You should see a "SBuild Libraries" entry in your <em>Package Explorer</em>.
+Wenn you expand that tree node, you should see all your (exported) dependencies.</p>
+</div>
+</div>
+</div></p>
+
+
+		</div>
+		<div id="push"></div>
+    </div>
+    
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/run_prettify.js"></script>
+    
+  </body>
+</html>

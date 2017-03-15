@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SBuild 0.7.2 released - SBuild</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SBuild 0.7.2 was released and brings a refined Plugin API as well as improvements and bug fixes.">
+        <meta name="author" content="">
+    <meta name="keywords" content="">
+
+	<!-- TWitter card -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@SBuildOrg">
+	<meta name="twitter:creator" content="@TobiasRoeser">
+	       	<meta name="twitter:title" content="SBuild 0.7.2 released">
+		  <meta name="twitter:description" content="SBuild 0.7.2 was released and brings a refined Plugin API as well as improvements and bug fixes.">
+	  	
+
+    <!-- Le styles -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/asciidoctor.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="/favicon.ico">
+  </head>
+  <body>
+    <div id="wrap">
+	
+	<!-- Fixed navbar -->
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="/">SBuild</a>
+			<form class="navbar-form navbar-search pull-right" action="http://www.google.com/search">
+                    <input type="text" name="q" class="search-query input-medium" placeholder="Google Search" />
+                    <input type="hidden" name="sitesearch" value="sbuild.org" />
+            </form>
+            <div class="nav-collapse collapse">
+              <ul class="nav pull-right">
+                <li class="dropdown"><a href="/news">News</a>
+                  <ul class="dropdown-menu" role="menu">
+                                            <li><a href="/news/2014/12/17/SBuild-0.7.7-About-Thread-Deadlock-fixes-and-parallel-ClassLoaders-in-Scala.html">SBuild 0.7.7 - About Thread Deadlock fixes and parallel ClassLoaders in Scala <small class="muted">- 17 December 2014</small></a></li>
+                        <li><a href="/news/2014/05/31/SBuild-0.7.6-ScalaDays-Hackathon-Release.html">SBuild 0.7.6 - ScalaDays Hackathon Release <small class="muted">- 31 May 2014</small></a></li>
+                        <li><a href="/news/2014/05/09/SBuild-Eclipse-Plugin-0.4.3-released.html">SBuild Eclipse Plugin 0.4.3 released <small class="muted">- 09 May 2014</small></a></li>
+                        <li><a href="/news/2014/04/04/SBuild-0.7.5-released.html">SBuild 0.7.5 released <small class="muted">- 04 April 2014</small></a></li>
+                        <li><a href="/news/2014/03/20/SBuild-0.7.4-released.html">SBuild 0.7.4 released <small class="muted">- 20 March 2014</small></a></li>
+                    <li><a href="/news">older News...</a><li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a href="/doc/sbuild">Documentation</a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/doc/sbuild/0.7.7"><i class="icon-book"></i> SBuild Reference Manual <span class="muted">0.7.7</span></a></li>
+                    <li><a href="http://sbuild.org/uploads/sbuild/0.7.7/scaladoc/de.tototec.sbuild/#de.tototec.sbuild.package"><i class="icon-file-text"></i> SBuild Core ScalaDoc <span class="muted">0.7.7</span></a></li>
+                    <li><a href="/releases"><i class="icon-calendar"></i> Release History</a></li>
+                    <li><a href="/faq"><i class="icon-question-sign"></i> FAQ</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a href="/download">Download</a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="http://sbuild.org/uploads/sbuild/0.7.7/sbuild-0.7.7-dist.zip"><i class="icon-download-alt"></i> SBuild 0.7.7 Distribution <small class="muted">- 2014-12-17</small></a></li>
+                  </ul>
+                </li>
+                <li><a href="/plugins.html">Plugins</a></li>
+                <li><a href="/eclipse">Eclipse</a></li>
+                <li class="dropdown">
+                    <a href="/community.html">Get Involved / Contact</a>
+                   <ul class="dropdown-menu" role="menu">
+                    <li><a href="https://github.com/SBuild-org/sbuild"><i class="icon-github"></i> GitHub</a></li>
+                    <li><a href="https://twitter.com/SBuildOrg"><i class="icon-twitter"></i> Twitter <small class="muted">@SBuildOrg</small></a></li>
+                    <li><a href="https://gitter.im/SBuild-org/sbuild" ><i class="icon-comments"></i> Gitter</li>
+<!--                    <li><a href="http://webchat.freenode.net/?channels=%23sbuild" ><i class="icon-comments"></i> IRC <small class="muted">#sbuild</small></a></li>
+-->
+                    <li><a href="https://groups.google.com/forum/#!forum/sbuild-dev"><i class="icon-envelope"></i> Developers <small class="muted">sbuild-dev</small></a></li>
+                    <li><a href="https://groups.google.com/forum/#!forum/sbuild-user"><i class="icon-envelope"></i> User Forum <small class="muted">sbuild-user</small></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+	
+	<div class="row">
+	  <div class="span8">
+	    <div class="page-header">
+		  <h1>SBuild 0.7.2 released</h1>
+	    </div>
+
+	    <p><em>06 March 2014 by Tobias Roeser</em></p>
+
+		<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Today, we released <a href="/releases/SBuild-0.7.2.html">SBuild 0.7.2</a>.</p>
+</div>
+<div class="paragraph">
+<p>In this release, again, we refined the <strong>Plugin API</strong>. You can now express inter-plug-in dependencies by extending the <code>PluginWithDependencies</code> trait.
+Also, your plugin factory can get notified whenever your plug-in&#8217;s configuration was changes by extending the <code>PluginConfigureAware</code> trait.
+This will be especially useful, if you want to push configuration changes forward to plugins your plugin depends on.
+Both changes open the door for meta plugins, that (transparently) rely on other plugins to do the work.</p>
+</div>
+<div class="paragraph">
+<p>Also some other improvements and bug fixes found their way into this version.
+E.g. the <code>ZipSchemeHandler</code> was extended to allow extraction from ZIP resources based on regular expression patterns.
+Also, this version of SBuild should run with a Java 6 Runtime again, which was not the case with version <a href="/releases/SBuild-0.7.0.html">0.7.0</a> and <a href="/releases/SBuild-0.7.1.html">0.7.1</a>.</p>
+</div>
+<div class="paragraph">
+<p>For a complete list of changes read the <a href="/releases//SBuild-0.7.2.html#Changelog">Changelog</a>.</p>
+</div>
+</div>
+</div></p>
+		
+		
+	    <ul class="pager">
+		    <li class="previous"><a href="/news/2014/02/11/Issue-Tracker-moved-to-GitHub.html">&larr; Older</a></li>
+		    <li><a href="/news">List all news items</a></li>
+		    <li class="next"><a href="/news/2014/03/18/SBuild-0.7.3-released.html">Newer &rarr;</a></li>
+		</ul>
+	    
+	        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'sbuild'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+      </div>
+      <div class="span4">
+	    <h1><small>Recent News</small></h1>
+	    
+			<h3><small>December 2014</small></h3>
+			<ul>
+		
+		<li>17 - <a href="/news/2014/12/17/SBuild-0.7.7-About-Thread-Deadlock-fixes-and-parallel-ClassLoaders-in-Scala.html">SBuild 0.7.7 - About Thread Deadlock fixes and parallel ClassLoaders in Scala</a></li>
+				</ul>
+				<h3><small>May 2014</small></h3>
+				<ul>
+		
+		<li>31 - <a href="/news/2014/05/31/SBuild-0.7.6-ScalaDays-Hackathon-Release.html">SBuild 0.7.6 - ScalaDays Hackathon Release</a></li>
+		
+		<li>09 - <a href="/news/2014/05/09/SBuild-Eclipse-Plugin-0.4.3-released.html">SBuild Eclipse Plugin 0.4.3 released</a></li>
+				</ul>
+				<h3><small>April 2014</small></h3>
+				<ul>
+		
+		<li>04 - <a href="/news/2014/04/04/SBuild-0.7.5-released.html">SBuild 0.7.5 released</a></li>
+				</ul>
+				<h3><small>March 2014</small></h3>
+				<ul>
+		
+		<li>20 - <a href="/news/2014/03/20/SBuild-0.7.4-released.html">SBuild 0.7.4 released</a></li>
+		
+		<li>18 - <a href="/news/2014/03/18/SBuild-0.7.3-released.html">SBuild 0.7.3 released</a></li>
+		
+		<li>06 - <a href="/news/2014/03/06/SBuild-0.7.2-released.html">SBuild 0.7.2 released</a></li>
+				</ul>
+				<h3><small>February 2014</small></h3>
+				<ul>
+		
+		<li>11 - <a href="/news/2014/02/11/Issue-Tracker-moved-to-GitHub.html">Issue Tracker moved to GitHub</a></li>
+				</ul>
+				<h3><small>December 2013</small></h3>
+				<ul>
+		
+		<li>20 - <a href="/news/2013/12/20/SBuild-0.7.1-released.html">SBuild 0.7.1 released</a></li>
+		
+		<li>20 - <a href="/news/2013/12/20/The-Plugin-System-of-SBuild-0.7.1.html">The Plugin System of SBuild 0.7.1</a></li>
+		
+		<li>06 - <a href="/news/2013/12/06/Jenkins-Plugin-for-SBuild-available.html">Jenkins Plugin for SBuild available</a></li>
+		
+		<li>06 - <a href="/news/2013/12/06/SBuild-0.7.0-released.html">SBuild 0.7.0 released</a></li>
+		
+		<li>06 - <a href="/news/2013/12/06/The-Plugin-System-of-SBuild-0.7.0.html">The Plugin System of SBuild 0.7.0</a></li>
+		
+		<li>03 - <a href="/news/2013/12/03/All-SBuild-repositories-are-now-hosted-on-GitHub.html">All SBuild repositories are now hosted on GitHub</a></li>
+				</ul>
+				<h3><small>November 2013</small></h3>
+				<ul>
+		
+		<li>21 - <a href="/news/2013/11/21/SBuild-switched-to-Git.html">SBuild switched to Git</a></li>
+				</ul>
+				<h3><small>September 2013</small></h3>
+				<ul>
+		
+		<li>19 - <a href="/news/2013/09/19/SBuild-0.6.0-released.html">SBuild 0.6.0 released</a></li>
+				</ul>
+				<h3><small>July 2013</small></h3>
+				<ul>
+		
+		<li>12 - <a href="/news/2013/07/12/SBuild-0.5.0-New-and-Noteworthy.html">New and Noteworthy of SBuild 0.5.0</a></li>
+		
+		<li>12 - <a href="/news/2013/07/12/SBuild-0.5.0-Released.html">SBuild 0.5.0 Released</a></li>
+				</ul>
+				<h3><small>April 2013</small></h3>
+				<ul>
+		
+		<li>29 - <a href="/news/2013/04/29/SBuild-Eclipse-Plugin-0.4.1.html">SBuild Eclipse Plugin 0.4.1</a></li>
+		
+		<li>20 - <a href="/news/2013/04/20/SBuild-Eclipse-Plugin-0.4.0-Hackathon-Release.html">SBuild Eclipse Plugin 0.4.0 - Hackathon Release</a></li>
+				</ul>
+				<h3><small>March 2013</small></h3>
+				<ul>
+		
+		<li>11 - <a href="/news/2013/03/11/SBuild-0.4.0-Released.html">SBuild 0.4.0 Released</a></li>
+		
+		<li>07 - <a href="/news/2013/03/07/Attached-Files-and-Alias-Schemes-in-SBuild-0.4.html">Attached Files and Alias Schemes in SBuild 0.4</a></li>
+				</ul>
+				<h3><small>February 2013</small></h3>
+				<ul>
+		
+		<li>23 - <a href="/news/2013/02/23/Target-caching-in-SBuild-0.4.html">Target caching in SBuild 0.4</a></li>
+				</ul>
+				<h3><small>January 2013</small></h3>
+				<ul>
+		
+		<li>26 - <a href="/news/2013/01/26/SBuild-0.3.2-released.html">SBuild 0.3.2 released</a></li>
+				</ul>
+				<h3><small>November 2012</small></h3>
+				<ul>
+		
+		<li>27 - <a href="/news/2012/11/27/Natures-Experimental-high-level-abstraction-for-builds.html">Natures - Experimental high level abstraction for builds</a></li>
+				</ul>
+				<h3><small>October 2012</small></h3>
+				<ul>
+		
+		<li>31 - <a href="/news/2012/10/31/SBuild-Eclipse-Plugin-0.2.0.html">SBuild Eclipse Plugin 0.2.0</a></li>
+		
+		<li>29 - <a href="/news/2012/10/29/SBuild-Eclipse-Plugin-0.2.0-release-comming-soon.html">SBuild Eclipse Plugin 0.2.0 release comming soon</a></li>
+		
+		<li>23 - <a href="/news/2012/10/23/Managing-Eclipse-Build-Path-Entries-with-SBuild.html">Managing Eclipse Build Path Entries with SBuild</a></li>
+				</ul>
+				<h3><small>September 2012</small></h3>
+				<ul>
+		
+		<li>26 - <a href="/news/2012/09/26/SBuild-0.1.1-Released.html">SBuild 0.1.1 Released</a></li>
+				</ul>
+				<h3><small>July 2012</small></h3>
+				<ul>
+		
+		<li>29 - <a href="/news/2012/07/29/SBuild-0.1.0-First-Public-Release.html">SBuild 0.1.0 First Public Release</a></li>
+		
+		<li>12 - <a href="/news/2012/07/12/Preparations-for-first-release.html">Preparations for first release</a></li>
+	    
+	    </ul>
+	    
+	  </div>
+
+	<hr>
+	
+		</div>
+		<div id="push"></div>
+    </div>
+    
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/run_prettify.js"></script>
+    
+  </body>
+</html>
